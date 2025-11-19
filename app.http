@@ -1,0 +1,26 @@
+GET http://localhost:3333/api/auth/login
+
+###
+
+POST http://localhost:3333/api/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "sim",
+  "lastName": "simba",
+  "email": "simbaa@lion7124712.com",
+  "password": "hakuna_matata",
+  "role": "user"
+}
+
+###
+
+POST http://localhost:3333/api/auth/register/admin
+Content-Type: application/json
+
+{
+  "fullName": "sim",
+  "email": "simba@lion7124712.com",
+  "password": "hakuna_matata",
+  "role": "superadmin"
+}
