@@ -1,0 +1,54 @@
+name: 🏗️ DevOps Task
+description: Infrastructure, CI/CD, or deployment-related improvement.
+title: '[DEVOPS] <short summary> | <affected component>'
+labels: ['type: devops', 'status: triage-needed']
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Motivation
+      description: Describe what infrastructure or ops limitation exists today.
+      placeholder: 'App not containerized; inconsistent local environments; deployments fail intermittently.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: Describe the desired operational outcome.
+      placeholder: 'Containerized application with reproducible builds; automated CI pipeline.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: Technical details that must be satisfied for completion.
+      placeholder: |
+        - Dockerfile with multi-stage build
+        - GitHub Actions pipeline
+        - Environment variables securely managed
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - 'High – Blocking workflow or deployment'
+        - 'Medium – Needed soon but not blocking'
+        - 'Low – Nice improvement'
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+    validations:
+      required: false

@@ -1,0 +1,97 @@
+name: 🐛 Bug Report
+description: Internal team bug report template
+title: '[BUG] <short summary> | <affected module>'
+labels: ['type bug', '🚦 status: triage-needed']
+body:
+  - type: checkboxes
+    id: duplicates
+    attributes:
+      label: Duplicate Check
+      description: Confirm this issue has not been logged before. This step is mandatory.
+      options:
+        - label: I have checked both **open** and **closed** issues and this is not a duplicate.
+          required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Where did this bug occur?
+      description: |
+        Example: "Local dev", "Staging", "Production", etc.
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: Version of tengago (for example "v1.2.3")
+      description: Can be found in the footer of the tengago.com website.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the bug you have found. Please include relevant information and resources (for example the steps to reproduce the bug)
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        Provide exact steps to reliably reproduce the bug.
+        Use `1.` for each line. GitHub will auto-number.
+      value: |
+
+        For example:
+
+        1. Open the Dashboard page
+        1. Click "Generate Report"
+        1. Observe: spinner never stops
+
+        If you don't know exact steps, include any relevant details like:
+
+        - What page you were on...
+        - What you were trying to do...
+        - What went wrong...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: Describe what should have happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Please add screenshots if applicable
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How badly this bug affects users or the system.
+      options:
+        - 'High – Blocking core functionality / production outage'
+        - 'Medium – Partial breakage but workaround exists'
+        - 'Low – Minor issue, UI glitch, or non-blocking bug'
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: extrainfo
+    attributes:
+      label: If "yes" to above, please explain how you would technically implement this
+      description: For example reference any existing code
+    validations:
+      required: false

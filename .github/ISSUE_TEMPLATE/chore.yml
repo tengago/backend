@@ -1,0 +1,30 @@
+name: 🧹 Chore / Maintenance
+description: Routine maintenance tasks such as dependency updates or cleanup.
+title: '[CHORE] <short summary>'
+labels: ['type: chore', 'status: triage-needed']
+
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short explanation of the maintenance needed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Reason
+      description: Why this maintenance is needed.
+      placeholder: 'Security patch; outdated dependency; remove unused code.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Expected Impact
+      description: Describe effect on codebase, builds, or deployments.
+    validations:
+      required: false

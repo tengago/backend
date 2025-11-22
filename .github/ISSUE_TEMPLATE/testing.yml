@@ -1,0 +1,43 @@
+name: 🧪 Testing Task
+description: Add or improve automated tests.
+title: '[TEST] <short summary> | <affected module>'
+labels: ['type: test', 'status: triage-needed']
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Current Gap
+      description: Describe the missing or insufficient test coverage.
+      placeholder: 'Registration controller has no unit tests; edge cases missing.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: Describe the outcome required (not implementation).
+      placeholder: 'Achieve 90% coverage on auth module; include error cases.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Test Requirements
+      description: List what scenarios must be covered.
+      placeholder: |
+        - Happy path
+        - Validation failures
+        - Permission checks
+        - Error handling
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+    validations:
+      required: false

@@ -1,0 +1,46 @@
+name: 🔧 Refactor Task
+description: Improve code structure, readability, or maintainability without changing behavior.
+title: '[REFACTOR] <short summary> | <affected module>'
+labels: ['type: refactor', 'status: triage-needed']
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Current Issue
+      description: |
+        Describe why this part of the codebase needs refactoring. Example: high complexity, duplicate logic, poor readability.
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: Describe the intended outcome of the refactor (not the implementation).
+      placeholder: 'Reduce cyclomatic complexity; extract reusable module; improve testability.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: In-Scope Changes
+      description: List exactly what will be modified. Should not include new features.
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Any risks, compatibility concerns, or behavior that must not change.
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+    validations:
+      required: false

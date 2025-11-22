@@ -1,0 +1,35 @@
+name: 🔐 Security Task
+description: Address security weaknesses or implement security improvements.
+title: '[SECURITY] <short summary> | <affected module>'
+labels: ['type: security', 'status: triage-needed']
+
+body:
+  - type: textarea
+    id: issue
+    attributes:
+      label: Security Concern
+      description: What vulnerability, weakness, or risk exists.
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: Desired secure state.
+      placeholder: 'Enforce HTTPS; rotate tokens; rate-limit login.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: Mandatory actions and constraints.
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes

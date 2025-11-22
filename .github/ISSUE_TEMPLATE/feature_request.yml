@@ -1,0 +1,73 @@
+name: 💡 Feature Request
+description: Propose a feature or enhancement for Tengago.
+title: '[FEATURE] <short summary> | <affected module>'
+labels: ['type: feature', 'status: triage-needed']
+
+body:
+  - type: checkboxes
+    id: duplicates
+    attributes:
+      label: Duplicate Check
+      description: Confirm this feature has not been proposed before.
+      options:
+        - label: I have checked both **open** and **closed** issues and this is not a duplicate.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Describe the concrete problem this feature is meant to solve. Avoid vague or emotional language.
+      placeholder: 'Users cannot filter results; admin cannot assign vendors; etc.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal / Expected Outcome
+      description: Describe the outcome you expect after this feature is implemented—not the implementation itself.
+      placeholder: 'Allow users to filter products by price, category, and vendor.'
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      description: List the functional requirements. These must be testable and unambiguous.
+      placeholder: |
+        - Add API endpoint GET /products?category=&price=
+        - Must support filtering by category, price range
+        - Response should include pagination
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution (Optional)
+      description: If you have a technical approach in mind, describe it here. This is optional; engineering will refine it.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Priority
+      description: How important is this feature?
+      options:
+        - 'High – Needed immediately / blocks other work'
+        - 'Medium – Important but not urgent'
+        - 'Low – Nice to have'
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes (Optional)
+      description: Add relevant references, links, or considerations.
+    validations:
+      required: false
