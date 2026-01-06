@@ -1,38 +1,47 @@
 name: 🐛 Bug Report
-description: Internal team bug report template
-title: '[BUG] <short summary> | <affected module>'
-labels: ['type bug', '🚦 status: triage-needed']
+description: Report a bug found in Tengago (internal team use)
+title: '[BUG] <short summary>'
+labels: ['type: bug', 'status: triage-needed']
+
 body:
   - type: checkboxes
     id: duplicates
     attributes:
       label: Duplicate Check
-      description: Confirm this issue has not been logged before. This step is mandatory.
+      description: Confirm this bug has not been reported before.
       options:
-        - label: I have checked both **open** and **closed** issues and this is not a duplicate.
+        - label: I have searched both **open** and **closed** issues and confirmed this is not a duplicate.
           required: true
 
-  - type: input
-    id: location
+  - type: dropdown
+    id: environment
     attributes:
-      label: Where did this bug occur?
-      description: |
-        Example: "Local dev", "Staging", "Production", etc.
+      label: Environment
+      description: Where did this bug occur?
+      options:
+        - Production
+        - Staging
+        - Development (local)
+        - Testing/QA
+        - Other (specify in Additional Context)
     validations:
       required: true
 
   - type: input
+    id: version
     attributes:
-      label: Version of tengago (for example "v1.2.3")
-      description: Can be found in the footer of the tengago.com website.
+      label: Version/Branch
+      description: 'Tengago version (e.g., "v1.2.3" from footer) or Git branch/commit if in development.'
+      placeholder: 'v1.2.3 or main@abc1234'
     validations:
       required: true
 
   - type: textarea
-    id: description
+    id: summary
     attributes:
-      label: Description
-      description: A clear description of the bug you have found. Please include relevant information and resources (for example the steps to reproduce the bug)
+      label: Bug Summary
+      description: A brief, clear summary of the bug in 1-2 sentences.
+      placeholder: 'Example: Report generation fails with a 500 error when the date range spans more than 30 days.'
     validations:
       required: true
 
@@ -40,22 +49,18 @@ body:
     id: steps
     attributes:
       label: Steps to Reproduce
-      description: |
-        Provide exact steps to reliably reproduce the bug.
-        Use `1.` for each line. GitHub will auto-number.
+      description: Provide clear, numbered steps that reliably reproduce this bug.
+      placeholder: |
+        1. Log in as admin user
+        2. Navigate to Reports > Generate Custom Report
+        3. Select date range: Jan 1, 2025 to Feb 15, 2025 (45 days)
+        4. Click "Generate Report"
+        5. Observe: 500 Internal Server Error appears
       value: |
-
-        For example:
-
-        1. Open the Dashboard page
-        1. Click "Generate Report"
-        1. Observe: spinner never stops
-
-        If you don't know exact steps, include any relevant details like:
-
-        - What page you were on...
-        - What you were trying to do...
-        - What went wrong...
+        1.
+        2.
+        3.
+        4.
     validations:
       required: true
 
@@ -63,35 +68,97 @@ body:
     id: expected
     attributes:
       label: Expected Behavior
-      description: Describe what should have happened instead.
+      description: What should happen instead?
+      placeholder: 'Example: Report should generate successfully and display data for the selected date range.'
     validations:
       required: true
 
   - type: textarea
-    id: screenshots
+    id: actual
     attributes:
-      label: Screenshots
-      description: Please add screenshots if applicable
+      label: Actual Behavior
+      description: What actually happened? Be specific.
+      placeholder: 'Example: Server returns 500 error. Page shows "Something went wrong" message. No report is generated.'
     validations:
-      required: false
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Frequency
+      description: How often does this bug occur?
+      options:
+        - Always (100% reproducible)
+        - Often (>50% of the time)
+        - Sometimes (intermittent)
+        - Once (unable to reproduce)
+    validations:
+      required: true
 
   - type: dropdown
     id: severity
     attributes:
       label: Severity
-      description: How badly this bug affects users or the system.
+      description: How severely does this bug impact users or the system?
       options:
-        - 'High – Blocking core functionality / production outage'
-        - 'Medium – Partial breakage but workaround exists'
-        - 'Low – Minor issue, UI glitch, or non-blocking bug'
-      default: 1
+        - Critical – Complete system outage or data loss
+        - High – Blocks core functionality, no workaround
+        - Medium – Partial breakage, workaround exists
+        - Low – Minor issue, cosmetic bug, or edge case
+      default: 2
     validations:
       required: true
 
   - type: textarea
-    id: extrainfo
+    id: browser-device
     attributes:
-      label: If "yes" to above, please explain how you would technically implement this
-      description: For example reference any existing code
+      label: Browser/Device/OS (if applicable)
+      description: Relevant for UI bugs or frontend issues.
+      placeholder: |
+        - Browser: Chrome 131
+        - OS: Windows 11
+        - Device: Desktop
+        - Screen size: 1920x1080
+    validations:
+      required: false
+
+  - type: textarea
+    id: errors
+    attributes:
+      label: Error Messages / Console Logs
+      description: Copy any error messages, stack traces, or console output. Use code blocks for formatting.
+      placeholder: |
+        Error: Cannot read property 'data' of undefined
+          at ReportGenerator.generate (report.js:45)
+          at async POST /api/reports (handler.js:120)
+      validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Screen Recording
+      description: Add visual evidence if it helps demonstrate the bug. Drag and drop images here.
+    validations:
+      required: false
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround (if any)
+      description: Is there a temporary way to avoid this bug?
+      placeholder: 'Example: Bug does not occur if date range is limited to 30 days or less.'
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information (user account details, data involved, recent changes, related issues, etc.).
+      placeholder: |
+        - This started happening after deployment on Dec 15
+        - Only affects admin users with "Reports" permission
+        - Related to issue #789
     validations:
       required: false
